@@ -6,12 +6,21 @@ import Home from "../views/Home.vue";
 Vue.use(VueRouter);
 
 const routes = [
+
+  // Login
+
   {
-    path: "/about",
-    name: "About",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    //Vista
+    path: "/login",
+    name: "Login",
+    component: () => import("../components/auth/TheLogin.vue"),
+    meta: {
+      public: true,
+    },
   },
+
+  // Home
+
   {
     // Vista
     path: "/",
@@ -31,8 +40,66 @@ const routes = [
           public: true,
         },
       },
+      {
+        path: "/about",
+        name: "About",
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../views/About.vue"),
+      },
     ],
   },
+
+  //Administration
+
+  {
+    path: '/administration',
+    name: 'Administration',
+    component: () => import('../views/Administration.vue'),
+    meta: {
+      auth: true
+    },
+    children: [
+      {
+        path: '/administracion',
+        name: 'AdministrationMainContent',
+        component: () => import('../components/AdministrationMainContent.vue'),
+      },
+      //{
+        //path: '/<Ruta de enlace>',
+        //name: '<El mismo nombre con la primera letra en mayuscula>',
+        //component: () => import('../components/<Ruta del componente>'),
+      //},
+      {
+        path: '/categoria',
+        name: 'Category',
+        component: () => import('../components/CRUDCategory.vue'),
+      },
+      {
+        path: '/articulo',
+        name: 'Product',
+        /** Modificar el CRUD al de articulos */
+        component: () => import('../components/CRUDProduct.vue'),
+      },
+      {
+        path: '/venta',
+        name: 'Sell',
+        /** Modificar el CRUD al de ventas */
+        component: () => import('../components/CRUDSell.vue'),
+      },
+      {
+        path: '/cliente',
+        name: 'Client',
+        /** Modificar el CRUD al de ventas */
+        component: () => import('../components/CRUDClient.vue'),
+      },
+      {
+        path: '/usuario',
+        name: 'User',
+        /** Modificar el CRUD al de ventas */
+        component: () => import('../components/CRUDUser.vue'),
+      },
+    ]
+  }
 ];
 
 const router = new VueRouter({
