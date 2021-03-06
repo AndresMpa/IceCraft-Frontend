@@ -1,4 +1,4 @@
-# icecraft
+# IceCraft
 
 ## Project setup
 ```
