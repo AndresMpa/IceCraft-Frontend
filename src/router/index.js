@@ -6,12 +6,10 @@ import Home from "../views/Home.vue";
 Vue.use(VueRouter);
 
 const routes = [
-
   // Login
-
   {
     //Vista
-    path: "/login",
+    path: "/acceso",
     name: "Login",
     component: () => import("../components/auth/TheLogin.vue"),
     meta: {
@@ -19,8 +17,18 @@ const routes = [
     },
   },
 
-  // Home
+  // Account
+  {
+    //Vista
+    path: "/cuenta",
+    name: "Account",
+    component: () => import("../components/auth/TheAccount.vue"),
+    meta: {
+      public: true,
+    },
+  },
 
+  // Home
   {
     // Vista
     path: "/",
@@ -32,74 +40,62 @@ const routes = [
     // Componentes
     children: [
       {
-        path: "/main",
-        name: "HelloWorld",
+        path: "/principal",
+        name: "Main",
         // Lazy loader
-        component: () => import("../components/HelloWorld.vue"),
+        component: () => import("../components/LayoutHome.vue"),
         meta: {
           public: true,
         },
-      },
-      {
-        path: "/about",
-        name: "About",
-        component: () =>
-          import(/* webpackChunkName: "about" */ "../views/About.vue"),
       },
     ],
   },
 
   //Administration
-
   {
-    path: '/administration',
-    name: 'Administration',
-    component: () => import('../views/Administration.vue'),
+    path: "/administracion",
+    name: "Administration",
+    component: () => import("../views/Administration.vue"),
     meta: {
-      auth: true
+      auth: true,
     },
     children: [
-      {
-        path: '/administracion',
-        name: 'AdministrationMainContent',
-        component: () => import('../components/AdministrationMainContent.vue'),
-      },
       //{
-        //path: '/<Ruta de enlace>',
-        //name: '<El mismo nombre con la primera letra en mayuscula>',
-        //component: () => import('../components/<Ruta del componente>'),
+      //path: '/<Ruta de enlace>',
+      //name: '<El mismo nombre con la primera letra en mayuscula>',
+      //component: () => import('../components/<Ruta del componente>'),
       //},
       {
-        path: '/categoria',
-        name: 'Category',
-        component: () => import('../components/CRUDCategory.vue'),
+        path: "/principal",
+        name: "AdministrationMainContent",
+        component: () => import("../components/AdministrationMainContent.vue"),
       },
       {
-        path: '/articulo',
-        name: 'Product',
+        path: "/articulo",
+        name: "Product",
         /** Modificar el CRUD al de articulos */
-        component: () => import('../components/CRUDProduct.vue'),
+        component: () => import("../components/CRUDProduct.vue"),
       },
       {
-        path: '/venta',
-        name: 'Sell',
+        path: "/venta",
+        name: "Sell",
         /** Modificar el CRUD al de ventas */
-        component: () => import('../components/CRUDSell.vue'),
+        component: () => import("../components/CRUDSell.vue"),
       },
+     // {
+        //path: "/cliente",
+        //name: "Client",
+        //[>* Modificar el CRUD al de ventas <]
+        //component: () => import("../components/CRUDClient.vue"),
+      //},
       {
-        path: '/cliente',
-        name: 'Client',
+        path: "/usuario",
+        name: "User",
         /** Modificar el CRUD al de ventas */
-        component: () => import('../components/CRUDClient.vue'),
+        component: () => import("../components/CRUDUser.vue"),
       },
-      {
-        path: '/usuario',
-        name: 'User',
-        /** Modificar el CRUD al de ventas */
-        component: () => import('../components/CRUDUser.vue'),
-      },
-    ]
-  }
+    ],
+  },
 ];
 
 const router = new VueRouter({
