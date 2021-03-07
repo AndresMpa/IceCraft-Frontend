@@ -7,7 +7,7 @@
     >
       <v-list dense>
         <template>
-          <v-list-item :to="{ name: 'LayoutHome' }">
+          <v-list-item :to="{ name: 'Home' }">
             <v-list-item-action>
               <v-icon>home</v-icon>
             </v-list-item-action>
@@ -21,12 +21,28 @@
                 <v-list-item-title> Productos </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-            <v-list-item :to="{ name: 'LayoutProduct' }">
+            <v-list-item :to="{ name: 'News' }">
+              <v-list-item-action>
+                <v-icon>mdi-newspaper</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title> Noticias </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item :to="{ name: 'Book' }">
+              <v-list-item-action>
+                <v-icon>mdi-bookshelf</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title> Libros </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item :to="{ name: 'Reserve' }">
               <v-list-item-action>
                 <v-icon>mdi-clipboard-edit</v-icon>
               </v-list-item-action>
               <v-list-item-content>
-                <v-list-item-title> Productos </v-list-item-title>
+                <v-list-item-title> Reservas </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list-group>
@@ -35,15 +51,31 @@
           <v-list-group>
             <v-list-item slot="activator">
               <v-list-item-content>
-                <v-list-item-title> Testimonios </v-list-item-title>
+                <v-list-item-title> Social </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-            <v-list-item :to="{ name: 'LayoutTestimony' }">
+            <v-list-item :to="{ name: 'Friend' }">
               <v-list-item-action>
-                <v-icon>mdi-account-heart</v-icon>
+                <v-icon>mdi-account-box-multiple</v-icon>
               </v-list-item-action>
               <v-list-item-content>
-                <v-list-item-title> Nuestros clientes </v-list-item-title>
+                <v-list-item-title> Amigos </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item :to="{ name: 'Chat' }">
+              <v-list-item-action>
+                <v-icon>mdi-mailbox-open-up</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title> Chats </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item :to="{ name: 'Foro' }">
+              <v-list-item-action>
+                <v-icon>mdi-account-group</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title> Foro </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list-group>
@@ -52,18 +84,44 @@
           <v-list-group>
             <v-list-item slot="activator">
               <v-list-item-content>
-                <v-list-item-title> Información </v-list-item-title>
+                <v-list-item-title> Perfil </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-            <v-list-item :to="{ name: 'LayoutCreator' }">
+            <v-list-item :to="{ name: 'User' }">
               <v-list-item-action>
-                <v-icon>mdi-account-group</v-icon>
+                <v-icon>mdi-clipboard-account</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title> Administrar </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item :to="{ name: 'Purchase' }">
+              <v-list-item-action>
+                <v-icon>mdi-history</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title> Compras </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-group>
+        </template>
+
+        <template>
+          <v-list-group>
+            <v-list-item slot="activator">
+              <v-list-item-content>
+                <v-list-item-title> Contacto </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item :to="{ name: 'Creator' }">
+              <v-list-item-action>
+                <v-icon>mdi-creative-commons</v-icon>
               </v-list-item-action>
               <v-list-item-content>
                 <v-list-item-title> Creadores </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-            <v-list-item :to="{ name: 'LayoutInfo' }">
+            <v-list-item :to="{ name: 'Info' }">
               <v-list-item-action>
                 <v-icon>mdi-book-information-variant</v-icon>
               </v-list-item-action>
@@ -118,5 +176,4 @@ export default {
   },
 };
 </script>
-<style lang="css">
-</style>
+<style lang="css"></style>

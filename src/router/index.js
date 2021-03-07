@@ -48,6 +48,96 @@ const routes = [
           public: true,
         },
       },
+      {
+        path: "/noticias",
+        name: "News",
+        // Lazy loader
+        component: () => import("../components/LayoutNew.vue"),
+        meta: {
+          public: true,
+        },
+      },
+      {
+        path: "/libros",
+        name: "Book",
+        // Lazy loader
+        component: () => import("../components/LayoutBook.vue"),
+        meta: {
+          public: true,
+        },
+      },
+      {
+        path: "/reservas",
+        name: "Reserve",
+        // Lazy loader
+        component: () => import("../components/LayoutReserve.vue"),
+        meta: {
+          public: true,
+        },
+      },
+      {
+        path: "/amigos",
+        name: "Friend",
+        // Lazy loader
+        component: () => import("../components/LayoutFriend.vue"),
+        meta: {
+          public: true,
+        },
+      },
+      {
+        path: "/chats",
+        name: "Chat",
+        // Lazy loader
+        component: () => import("../components/LayoutChat.vue"),
+        meta: {
+          public: true,
+        },
+      },
+      {
+        path: "/foro",
+        name: "Foro",
+        // Lazy loader
+        component: () => import("../components/LayoutForo.vue"),
+        meta: {
+          public: true,
+        },
+      },
+      {
+        path: "/administrar-perfil",
+        name: "User",
+        // Lazy loader
+        component: () => import("../components/LayoutUser.vue"),
+        meta: {
+          public: true,
+        },
+      },
+      {
+        path: "/historial-de-compras",
+        name: "Purchase",
+        // Lazy loader
+        component: () => import("../components/LayoutPurchase.vue"),
+        meta: {
+          public: true,
+        },
+      },
+      {
+        path: "/creadores",
+        name: "Creator",
+        // Lazy loader
+        component: () => import("../components/LayoutCreator.vue"),
+        meta: {
+          public: true,
+        },
+      },
+      {
+        path: "/informacion-de-contacto",
+        name: "Info",
+        // Lazy loader
+        component: () => import("../components/LayoutInfo.vue"),
+        meta: {
+          public: true,
+        },
+      },
     ],
   },
 
