@@ -1,6 +1,7 @@
 <template>
   <div>
     <administration-bar />
+    <p>Ya se ve esta madre</p>
   </div>
 </template>
 <script>

@@ -1,13 +1,13 @@
 <template>
-  <the-login>
+  <the-account>
 </template>
 
 <script>
-import TheLogin from '../components/auth/TheLogin.vue'
+import TheAccount from '../components/auth/TheAccount.vue'
 export default {
   components: {
-    TheLogin
-  },  
+    TheAccount
+  },
 }
 </script>
 

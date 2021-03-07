@@ -7,7 +7,7 @@
     >
       <v-list dense>
         <template>
-          <v-list-item :to="{ name: 'LayoutMain' }">
+          <v-list-item :to="{ name: 'LayoutHome' }">
             <v-list-item-action>
               <v-icon>home</v-icon>
             </v-list-item-action>
@@ -101,7 +101,7 @@
 </template>
 <script>
 export default {
-  name: "AppBar",
+  name: "LayoutNavigator",
   data() {
     return {
       drawer: true,
@@ -111,6 +111,9 @@ export default {
     logOut() {
       this.$store.dispatch("close");
       this.$router.push({ path: "principal" });
+    },
+    sendLogin() {
+      this.$router.push({ name: "Login" });
     },
   },
 };
