@@ -43,19 +43,19 @@
                 label="Acepto terminos y concondiciones"
                 required
               ></v-checkbox>
-
-              <v-btn class="mr-4" @click="validate" :disabled="!valid">
+              <v-btn class="mr-4" @click.prevent="validate" :disabled="!valid">
                 Enviar
               </v-btn>
-
-              <v-btn class="mr-4" @click="reset">
-                Borrar
-              </v-btn>
-
-              <v-btn @click="resetValidation">
+              <v-btn class="mr-4" @click.prevent="resetValidation">
                 Validar
               </v-btn>
-            </v-form>
+              <v-btn class="mr-4" @click.prevent="reset">
+                Borrar
+              </v-btn>
+              <v-btn class="mr-4" @click.prevent="sendLogin">
+                Cancelar
+              </v-btn>
+           </v-form>
           </v-card>
         </v-col>
       </v-row>
@@ -98,6 +98,10 @@ export default {
     resetValidation() {
       this.$refs.form.resetValidation();
     },
+    sendLogin() {
+      this.$store.dispatch("close");
+      this.$router.push({ name: "Login" });
+    }
   },
 };
 </script>

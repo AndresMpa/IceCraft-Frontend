@@ -1,15 +1,17 @@
 <template>
   <div>
     <administration-bar />
-    <p>Ya se ve esta madre</p>
+    <administration-main-content />
   </div>
 </template>
 <script>
 import AdministrationBar from '../components/AdministrationBar.vue';
+import AdministrationMainContent from '../components/AdministrationMainContent.vue';
 export default {
   name: "Administration",
   components: {
-    AdministrationBar
+    AdministrationBar,
+    AdministrationMainContent
   },
   data() {
     return {

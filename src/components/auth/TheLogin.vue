@@ -26,13 +26,13 @@
                 label="Contraseña"
                 type="password"
               ></v-text-field>
-              <v-btn class="mr-4" @click.prevent="loginUser">
+              <v-btn class="mr-4" @click.prevent="test"><!--@click.prevent="loginUser">-->
                 Ingresar
               </v-btn>
               <v-btn class="mr-4" @click.prevent="cancelLogin">
                 Cancelar
               </v-btn>
-              <v-btn class="mr-4" @click.prevent="cancelLogin" @click="sendToCreateAccount" >
+              <v-btn class="mr-4" @click.prevent="sendToCreateAccount" >
                 Crear una cuenta
               </v-btn>
             </form>
@@ -57,6 +57,9 @@ export default {
     };
   },
   methods: {
+    test() {
+      this.$router.push({ name: "AdministrationMainContent" });
+    },
     loginUser() {
       axios
         .post("/usuario/login", {

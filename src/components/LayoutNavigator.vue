@@ -7,7 +7,7 @@
     >
       <v-list dense>
         <template>
-          <v-list-item :to="{ name: 'Home' }">
+          <v-list-item :to="{ name: 'Main' }">
             <v-list-item-action>
               <v-icon>home</v-icon>
             </v-list-item-action>

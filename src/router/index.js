@@ -147,53 +147,69 @@ const routes = [
     name: "Administration",
     component: () => import("../views/Administration.vue"),
     meta: {
-      auth: true,
+      //auth: true,
+      public: true,
     },
     children: [
-      //{
-      //path: '/<Ruta de enlace>',
-      //name: '<El mismo nombre con la primera letra en mayuscula>',
-      //component: () => import('../components/<Ruta del componente>'),
-      //},
       {
         path: "/principal",
         name: "AdministrationMainContent",
         component: () => import("../components/AdministrationMainContent.vue"),
+        meta: {
+          public: true,
+        },
+      },
+      {
+        path: "/stock",
+        name: "Stock",
+        component: () => import("../components/CRUDStock.vue"),
+        meta: {
+          public: true,
+        },
       },
       {
         path: "/articulo",
         name: "Product",
-        /** Modificar el CRUD al de articulos */
         component: () => import("../components/CRUDProduct.vue"),
+        meta: {
+          public: true,
+        },
+      },
+      {
+        path: "/categorias",
+        name: "Category",
+        component: () => import("../components/CRUDCategory.vue"),
+        meta: {
+          public: true,
+        },
       },
       {
         path: "/venta",
         name: "Sell",
-        /** Modificar el CRUD al de ventas */
         component: () => import("../components/CRUDSell.vue"),
       },
-     // {
-        //path: "/cliente",
-        //name: "Client",
-        //[>* Modificar el CRUD al de ventas <]
-        //component: () => import("../components/CRUDClient.vue"),
-      //},
+      {
+        path: "/cliente",
+        name: "Client",
+        component: () => import("../components/CRUDClient.vue"),
+      },
       {
         path: "/usuario",
         name: "User",
-        /** Modificar el CRUD al de ventas */
         component: () => import("../components/CRUDUser.vue"),
       },
     ],
   },
 ];
 
+// URL del router
 const router = new VueRouter({
   base: process.env.BASE_URL,
   mode: "history",
   routes,
 });
 
+// Permisos
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.public)) {
     next();
