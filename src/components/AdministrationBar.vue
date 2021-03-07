@@ -23,18 +23,26 @@
             </v-list-item>
             <v-list-item :to="{ name: 'Category' }">
               <v-list-item-action>
-                <v-icon>mdi-view-dashboard</v-icon>
+                <v-icon>mdi-store-24-hour</v-icon>
               </v-list-item-action>
               <v-list-item-content>
-                <v-list-item-title> Categorias </v-list-item-title>
+                <v-list-item-title> Stock </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
             <v-list-item :to="{ name: 'Product' }">
               <v-list-item-action>
-                <v-icon>mdi-clipboard-edit</v-icon>
+                <v-icon>mdi-clipboard-edit-outline</v-icon>
               </v-list-item-action>
               <v-list-item-content>
                 <v-list-item-title> Articulos </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item :to="{ name: 'Category' }">
+              <v-list-item-action>
+                <v-icon>mdi-view-dashboard</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title> Categorias </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list-group>
@@ -115,5 +123,4 @@ export default {
   },
 };
 </script>
-<style lang="css">
-</style>
+<style lang="css"></style>
