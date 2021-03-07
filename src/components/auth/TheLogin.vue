@@ -12,7 +12,7 @@
             <form>
               <v-avatar>
                 <img
-                  src="https://img.icons8.com/dusk/64/000000/change-user-male.png"
+                  src="../../assets/logo.png"
                   class="login--avatar d-inline-flex"
                   alt="password"
                 />
@@ -26,9 +26,14 @@
                 label="Contraseña"
                 type="password"
               ></v-text-field>
-              <v-btn class="mr-4" @click.prevent="loginUser"> Ingresar </v-btn>
+              <v-btn class="mr-4" @click.prevent="loginUser">
+                Ingresar
+              </v-btn>
               <v-btn class="mr-4" @click.prevent="cancelLogin">
                 Cancelar
+              </v-btn>
+              <v-btn class="mr-4" @click.prevent="cancelLogin" @click="sendToCreateAccount" >
+                Crear una cuenta
               </v-btn>
             </form>
           </v-card>
@@ -68,9 +73,9 @@ export default {
             "Hola de nuevo " + this.$store.state.user.nombre,
             "success"
           );
-          if(localStorage.getItem("rol") == "Administrador") {
+          if (localStorage.getItem("rol") == "Administrador") {
             this.$router.push({ name: "AdministrationMainContent" });
-          }else{
+          } else {
             this.$router.push({ name: "LayoutMain" });
           }
         })
@@ -86,39 +91,17 @@ export default {
           swal("Error", this.currentError, "error");
         });
     },
+    sendToCreateAccount() {
+      this.$router.push({ name: "Account" });
+    },
     cancelLogin() {
       this.$store.dispatch("close");
-      this.$router.push({ path: "principal" });
+      this.$router.push({ name: "Main" });
     },
-    /**
-    async loginUser() {
-      try {
-        let response = await this.$http.post("/usuario/login", this.login);
-        let token = response.data.tokenReturn;
-        localStorage.setItem("jwt", token);
-        console.log(token);
-
-        if (token) {
-          let token = localStorage.getItem("jwt");
-          let decoded = VueJwtDecode.decode(token);
-          console.log(decoded);
-
-          swal("Exitoso", "Bienvenido " + decoded.nombre, "success");
-          this.$router.push("/home");
-        }
-      } catch (error) {
-        swal("Error", "Este registro no existe", "error");
-      }
-    },
-    cancelLogin() {
-      localStorage.removeItem("jwt");
-      this.$router.push("/");
-    },
-    */
   },
 };
 </script>
-<style lang='css'>
+<style lang="css">
 .sideImage {
   max-width: 70px;
   max-height: 70px;
