@@ -87,7 +87,7 @@
                 <v-list-item-title> Perfil </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-            <v-list-item :to="{ name: 'User' }">
+            <v-list-item :to="{ name: 'Profile' }">
               <v-list-item-action>
                 <v-icon>mdi-clipboard-account</v-icon>
               </v-list-item-action>

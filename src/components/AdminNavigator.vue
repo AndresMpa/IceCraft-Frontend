@@ -7,7 +7,7 @@
     >
       <v-list dense>
         <template>
-          <v-list-item :to="{ name: 'AdministrationMainContent' }">
+          <v-list-item :to="{ name: 'AdminMain' }">
             <v-list-item-action>
               <v-icon>home</v-icon>
             </v-list-item-action>
@@ -21,7 +21,7 @@
                 <v-list-item-title> Almacen </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-            <v-list-item :to="{ name: 'Category' }">
+            <v-list-item :to="{ name: 'Stock' }">
               <v-list-item-action>
                 <v-icon>mdi-store-24-hour</v-icon>
               </v-list-item-action>
@@ -109,7 +109,7 @@
 </template>
 <script>
 export default {
-  name: "AppBar",
+  name: "AdminNavigator",
   data() {
     return {
       drawer: true,
