@@ -16,10 +16,10 @@
           <div></div>
         </v-sheet>
       </v-col>
-      <administration-footer></administration-footer>
     </v-row>
   </v-container>
 </template>
+
 <script>
 import LayoutCreatorCard from "./LayoutCreatorCard.vue";
 export default {
@@ -37,11 +37,11 @@ export default {
         },
         {
           avatar: "https://avatars.githubusercontent.com/u/50428261?s=88&v=4",
-          nombre: "Luisito Comunica",
+          nombre: "Luis Guillermo Téllez Cárdenas",
           rol: "Backend developer",
           profile: "https://github.com/LuisGTC",
           descripcion:
-            "Un dude de sistemas",
+            "Estudiante de ingeniería en sistemas y computación en la UTP, desarrollador web, interesado en los idiomas y el desarrollo de vídeo juegos, así como también en la investigación de la sociedad en su desarrollo a traves de nuevas tecnologías",
         },
         {
           avatar: "https://avatars.githubusercontent.com/u/57612755?s=460&u=5e7eba506b1506b978c9951c862ea99ba50beec8&v=4",

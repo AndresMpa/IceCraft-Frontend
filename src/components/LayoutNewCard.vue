@@ -8,14 +8,14 @@
       ></v-progress-linear>
     </template>
 
-    <v-img height="250" src="https://picsum.photos/200/300"></v-img>
+    <v-img height="250" :src="feed.img"></v-img>
 
-    <v-card-title>Cafe Badilico</v-card-title>
+    <v-card-title>{{ feed.by }}</v-card-title>
 
     <v-card-text>
       <v-row align="center" class="mx-0">
         <v-rating
-          :value="4.5"
+          :value="feed.rarity"
           color="amber"
           dense
           half-increments
@@ -24,13 +24,11 @@
         ></v-rating>
 
         <div class="grey--text ml-4">
-          4.5 (413)
+          Rarity: {{feed.rarity}}
         </div>
       </v-row>
 
-      <div class="my-4 subtitle-1">
-        $ • Italian, Cafe
-      </div>
+      <div class="my-4 subtitle-1">$ • {{ feed.price }}, {{ feed.by }}</div>
 
       <div></div>
     </v-card-text>
@@ -42,17 +40,50 @@
     <v-card-text>
       <v-chip-group
         v-model="selection"
-        active-class="deep-purple accent-4 white--text"
+        active-class="primary accent-4 white--text"
         column
       >
+        <v-chip>5:30PM</v-chip>
+        <v-chip>1:30PM</v-chip>
+        <v-chip>2:30PM</v-chip>
+        <v-chip>4:30PM</v-chip>
+        <v-chip>6:30PM</v-chip>
+        <v-chip>8:30PM</v-chip>
+        <v-chip>10:30PM</v-chip>
+        <v-chip>5:30PM</v-chip>
         <v-chip>5:30PM</v-chip>
       </v-chip-group>
     </v-card-text>
 
     <v-card-actions>
-      <v-btn color="deep-purple lighten-2" text @click="reserve">
+      <v-btn color="primary lighten-2" text @click="reserve">
         Reserve
       </v-btn>
     </v-card-actions>
   </v-card>
 </template>
+
+<script>
+export default {
+  name: "LayoutNewCard",
+  props: {
+    feed: Object,
+  },
+  data: () => ({
+    loading: false,
+    selection: 1,
+  }),
+
+  methods: {
+    reserve() {
+      this.loading = true;
+      setTimeout(() => (this.loading = false), 2000);
+    },
+  },
+}
+</script>
+<style lang="css">
+.profile {
+  margin: auto;
+}
+</style>
