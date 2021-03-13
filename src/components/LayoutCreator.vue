@@ -8,9 +8,9 @@
         cols="card.flex"
         :key="index"
       >
-        <v-sheet class="pa-5" color="grey lighten-3">
+        <v-sheet class="pa-5">
           <div></div>
-          <v-sheet :rounded="rounded" class="mx-auto">
+          <v-sheet class="mx-auto">
             <layout-creator-card :member="creator"></layout-creator-card>
           </v-sheet>
           <div></div>

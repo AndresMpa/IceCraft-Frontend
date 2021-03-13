@@ -101,6 +101,16 @@
         <span class="hidden-sm-and-down">Administración</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
+      <div v-if="!this.$vuetify.theme.dark">
+        <v-btn @click="darkThemeSwitch" icon>
+          <v-icon>mdi-lightbulb-off</v-icon>
+        </v-btn>
+      </div>
+      <div v-else>
+        <v-btn @click="darkThemeSwitch" icon>
+          <v-icon>mdi-lightbulb-on</v-icon>
+        </v-btn>
+      </div>
       <v-btn @click="logOut" icon>
         <v-icon>logout</v-icon>
       </v-btn>
@@ -116,6 +126,16 @@ export default {
     };
   },
   methods: {
+    darkThemeSwitch() {
+      let theme = localStorage.getItem("theme");
+      if (theme != "dark") {
+        localStorage.setItem("theme", "dark");
+        this.$vuetify.theme.dark = true;
+      } else {
+        localStorage.removeItem("theme");
+        this.$vuetify.theme.dark = false;
+      }
+    },
     logOut() {
       this.$store.dispatch("close");
       this.$router.push({ path: "principal" });
