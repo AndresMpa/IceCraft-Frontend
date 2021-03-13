@@ -104,7 +104,7 @@ const routes = [
       },
       {
         path: "/administrar-perfil",
-        name: "User",
+        name: "Profile",
         // Lazy loader
         component: () => import("../components/LayoutUser.vue"),
         meta: {
@@ -144,8 +144,8 @@ const routes = [
   //Administration
   {
     path: "/administracion",
-    name: "Administration",
-    component: () => import("../views/Administration.vue"),
+    name: "Admin",
+    component: () => import("../views/Admin.vue"),
     meta: {
       //auth: true,
       public: true,
@@ -153,35 +153,23 @@ const routes = [
     children: [
       {
         path: "/principal",
-        name: "AdministrationMainContent",
-        component: () => import("../components/AdministrationMainContent.vue"),
-        meta: {
-          public: true,
-        },
+        name: "AdminMain",
+        component: () => import("../components/AdminMain.vue"),
       },
       {
         path: "/stock",
         name: "Stock",
         component: () => import("../components/CRUDStock.vue"),
-        meta: {
-          public: true,
-        },
       },
       {
         path: "/articulo",
         name: "Product",
         component: () => import("../components/CRUDProduct.vue"),
-        meta: {
-          public: true,
-        },
       },
       {
         path: "/categorias",
         name: "Category",
         component: () => import("../components/CRUDCategory.vue"),
-        meta: {
-          public: true,
-        },
       },
       {
         path: "/venta",

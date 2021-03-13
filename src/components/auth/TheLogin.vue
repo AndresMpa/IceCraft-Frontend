@@ -3,20 +3,19 @@
     <v-flex>
       <v-row align="center" align-content="center">
         <v-col align-self="center">
-          <v-card
+          <v-avatar>
+            <img
+              src="../../assets/logo.png"
+              class="login--avatar d-inline-flex"
+              alt="password"
+            /> </v-avatar
+          ><v-card
             dark
             color="white"
             style="max-width: 750px; margin: auto"
             class="overflow-hidden info pa-12 mt-12 login"
           >
             <form>
-              <v-avatar>
-                <img
-                  src="../../assets/logo.png"
-                  class="login--avatar d-inline-flex"
-                  alt="password"
-                />
-              </v-avatar>
               <v-card-title class="d-inline-flex">
                 Acceso al sistema
               </v-card-title>
@@ -26,13 +25,14 @@
                 label="Contraseña"
                 type="password"
               ></v-text-field>
-              <v-btn class="mr-4" @click.prevent="test"><!--@click.prevent="loginUser">-->
+              <v-btn class="mr-4" @click.prevent="test"
+                ><!--@click.prevent="loginUser">-->
                 Ingresar
               </v-btn>
               <v-btn class="mr-4" @click.prevent="cancelLogin">
                 Cancelar
               </v-btn>
-              <v-btn class="mr-4" @click.prevent="sendToCreateAccount" >
+              <v-btn class="mr-4" @click.prevent="sendToCreateAccount">
                 Crear una cuenta
               </v-btn>
             </form>
