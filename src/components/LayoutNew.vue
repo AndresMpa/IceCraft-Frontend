@@ -1,15 +1,16 @@
 <template>
   <v-container>
     <h2>Noticias</h2>
+    <br>
     <v-row justify="space-around">
       <v-col
-        style="display: inline-flex; margin: 1em; padding: 1em"
+        style="display: inline-flex; margin: 0 auto 0 auto; padding: 0 3em 0 3em;"
         v-for="(info, index) of feed"
         cols="card.flex"
         :key="index"
       >
-        <v-sheet class="pa-5 ma-5" color="grey lighten-3">
-          <v-sheet :rounded="rounded" class="mx-auto">
+      <v-sheet style="padding: auto; margin: 0 auto 0 auto;">
+          <v-sheet class="mx-auto">
             <layout-new-card :feed="info"></layout-new-card>
           </v-sheet>
         </v-sheet>
