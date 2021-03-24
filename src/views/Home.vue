@@ -6,9 +6,8 @@
 </template>
 
 <script>
-import LayoutHome from '../components/LayoutHome.vue';
-import LayoutNavigator from '../components/LayoutNavigator.vue';
-
+import LayoutNavigator from "../components/LayoutNavigator.vue";
+import LayoutHome from "../components/LayoutHome.vue";
 export default {
   name: "Home",
   components: {
@@ -17,8 +16,9 @@ export default {
   },
   methods: {
     sendMain() {
-      this.$router.push({path: "principal"});
-      console.log("Home");
+      this.$router.push({ name: "Main" }).catch(() => {
+        console.log("Home");
+      });
     },
   },
   //Hooks

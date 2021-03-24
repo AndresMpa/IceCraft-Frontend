@@ -43,7 +43,7 @@ const routes = [
         path: "/principal",
         name: "Main",
         // Lazy loader
-        component: () => import("../components/LayoutHome.vue"),
+        component: () => import("../components/LayoutMain.vue"),
         meta: {
           public: true,
         },
@@ -89,15 +89,6 @@ const routes = [
         name: "Chat",
         // Lazy loader
         component: () => import("../components/LayoutChat.vue"),
-        meta: {
-          public: true,
-        },
-      },
-      {
-        path: "/foro",
-        name: "Foro",
-        // Lazy loader
-        component: () => import("../components/LayoutForo.vue"),
         meta: {
           public: true,
         },

@@ -53,11 +53,11 @@ export default {
         },
         {
           avatar: "https://avatars.githubusercontent.com/u/79126055?s=460&v=4",
-          nombre: "Chamizo",
+          nombre: "Juan Camilo Montoya Muñoz",
           rol: "Administrador de base de datos",
           profile: "https://github.com/Chamizo-98",
           descripcion:
-            "Un dude de sistemas",
+            "Estudiante de ingeniería en sistemas y computación, interesado en la composición y manejo de bases de datos. Amante de las motos y recorrer los destinos más apasionados del territorio nacional.",
         },
       ],
     };
