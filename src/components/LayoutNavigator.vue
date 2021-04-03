@@ -56,7 +56,7 @@
             </v-list-item>
             <v-list-item :to="{ name: 'Friend' }">
               <v-list-item-action>
-                <v-icon>mdi-account-box-multiple</v-icon>
+                <v-icon>mdi-account-group</v-icon>
               </v-list-item-action>
               <v-list-item-content>
                 <v-list-item-title> Amigos </v-list-item-title>
@@ -68,14 +68,6 @@
               </v-list-item-action>
               <v-list-item-content>
                 <v-list-item-title> Chats </v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item :to="{ name: 'Foro' }">
-              <v-list-item-action>
-                <v-icon>mdi-account-group</v-icon>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title> Foro </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list-group>

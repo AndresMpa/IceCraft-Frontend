@@ -1,16 +1,21 @@
 <template>
   <v-container>
     <h2>Noticias</h2>
-    <br>
+    <br />
     <v-row justify="space-around">
       <v-col
-        style="display: inline-flex; margin: 0 auto 0 auto; padding: 0 3em 0 3em;"
+        style="display: inline-flex; margin: 0 auto 10px auto; padding: 0 3em 0 3em;"
         v-for="(info, index) of feed"
         cols="card.flex"
         :key="index"
       >
-      <v-sheet style="padding: auto; margin: 0 auto 0 auto;">
-          <v-sheet class="mx-auto">
+        <v-sheet
+          style="padding: auto; margin: 0 auto 10px auto;"
+          elevation="1"
+          outlined
+          shaped
+        >
+          <v-sheet class="mx-auto ">
             <layout-new-card :feed="info"></layout-new-card>
           </v-sheet>
         </v-sheet>

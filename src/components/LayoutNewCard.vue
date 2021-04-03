@@ -8,7 +8,7 @@
       ></v-progress-linear>
     </template>
 
-    <v-img height="250" :src="feed.img"></v-img>
+    <v-img height="250" :lazy-src="feed.img" :src="feed.img"></v-img>
 
     <v-card-title>{{ feed.by }}</v-card-title>
 
