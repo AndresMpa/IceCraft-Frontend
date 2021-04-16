@@ -8,8 +8,9 @@
               src="../../assets/logo.png"
               class="login--avatar d-inline-flex"
               alt="password"
-            /> </v-avatar
-          ><v-card
+            />
+          </v-avatar>
+          <v-card
             dark
             color="white"
             style="max-width: 750px; margin: auto"
