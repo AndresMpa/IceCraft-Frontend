@@ -159,12 +159,16 @@ export default {
         "Iron",
       ],
       //      keys: [
-      //        "Name",
+      //        "Title",
       //        "Author",
       //        "Date",
-      //        "Rarity",
+      //        "LitGenre",
       //        "Pages",
-      //        "Quality",
+      //        "issn",
+      //        "Languaje",
+      //        "Status",
+      //        "Quantity"
+      //        "Editorial",
       //        "Price",
       //      ],
       items: [
