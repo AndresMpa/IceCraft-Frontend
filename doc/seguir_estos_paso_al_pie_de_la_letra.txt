@@ -1,0 +1,5 @@
+git switch dev
+//Agregas todos los documentos
+git add .
+git commit -m "Documentacion de los sprints agregada"
+git pust -u origin dev
