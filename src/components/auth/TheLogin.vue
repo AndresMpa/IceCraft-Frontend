@@ -26,8 +26,7 @@
                 label="Contraseña"
                 type="password"
               ></v-text-field>
-              <v-btn class="mr-4" @click.prevent="test"
-                ><!--@click.prevent="loginUser">-->
+              <v-btn class="mr-4" @click.prevent="test"><!--@click.prevent="loginUser">-->
                 Ingresar
               </v-btn>
               <v-btn class="mr-4" @click.prevent="cancelLogin">
@@ -59,10 +58,11 @@ export default {
   },
   methods: {
     test() {
-      this.$router.push({ name: "AdministrationMainContent" });
+      this.$router.push({ name: "Main" });
     },
     loginUser() {
       axios
+      //Esta es la ruta del backend
         .post("/usuario/login", {
           email: this.email,
           password: this.password,
@@ -70,6 +70,7 @@ export default {
         .then((response) => {
           return response.data;
         })
+      //Se guarda el token de la sesion
         .then((data) => {
           this.$store.dispatch("keepToken", data.tokenReturn);
           swal(
@@ -77,6 +78,7 @@ export default {
             "Hola de nuevo " + this.$store.state.user.nombre,
             "success"
           );
+          //Redireccionamientos
           if (localStorage.getItem("rol") == "Administrador") {
             this.$router.push({ name: "AdministrationMainContent" });
           } else {

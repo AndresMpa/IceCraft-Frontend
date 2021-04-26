@@ -9,7 +9,7 @@
         />
       </v-avatar>
       <v-card class="mx-auto pa-5">
-        <v-card-title>Bivenido a IceCraft</v-card-title>
+        <v-card-title>Bienvenido a IceCraft</v-card-title>
         <v-card-text>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aperiam et sunt nam laborum doloremque minus, molestias a iusto maxime, reprehenderit laudantium. A blanditiis quas sunt rem tenetur nisi placeat.
           Amet fugit, laudantium minus accusantium error sit, iusto doloribus veritatis est molestiae dolores neque fugiat reiciendis odit! Sed perspiciatis minus fugit possimus ipsa, aspernatur, in fugiat explicabo accusamus illum quibusdam.

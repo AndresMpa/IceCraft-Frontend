@@ -9,7 +9,7 @@ const routes = [
   // Login
   {
     //Vista
-    path: "/acceso",
+    path: "/",
     name: "Login",
     component: () => import("../components/auth/TheLogin.vue"),
     meta: {
@@ -31,7 +31,7 @@ const routes = [
   // Home
   {
     // Vista
-    path: "/",
+    path: "/home",
     name: "Home",
     component: Home,
     meta: {
