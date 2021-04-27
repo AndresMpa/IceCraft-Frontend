@@ -1,15 +1,8 @@
 <template>
-  <v-layout class="primary">
+  <v-layout class="blue-grey darken-4">
     <v-flex>
       <v-row align="center" align-content="center">
         <v-col align-self="center">
-          <v-avatar>
-            <img
-              src="../../assets/logo.png"
-              class="login--avatar d-inline-flex"
-              alt="password"
-            />
-          </v-avatar>
           <v-card
             dark
             color="white"
@@ -17,16 +10,23 @@
             class="overflow-hidden info pa-12 mt-12 login"
           >
             <form>
-              <v-card-title class="d-inline-flex">
+              <img
+                src="../../assets/logo.png"
+                class="login--avatar justify-center"
+                alt="password"
+              />
+              <v-divider inset dark></v-divider>
+              <v-card-title class="justify-center">
                 Acceso al sistema
               </v-card-title>
-              <v-text-field v-model="email" label="Usuario"></v-text-field>
+              <v-text-field v-model="user" label="Usuario"></v-text-field>
               <v-text-field
                 v-model="password"
                 label="Contraseña"
                 type="password"
               ></v-text-field>
-              <v-btn class="mr-4" @click.prevent="test"><!--@click.prevent="loginUser">-->
+              <v-btn class="mr-4" @click.prevent="loginUser"
+                ><!--@click.prevent="test">-->
                 Ingresar
               </v-btn>
               <v-btn class="mr-4" @click.prevent="cancelLogin">
@@ -51,7 +51,6 @@ export default {
   data() {
     return {
       user: "",
-      email: "",
       password: "",
       currentError: null,
     };
@@ -62,15 +61,15 @@ export default {
     },
     loginUser() {
       axios
-      //Esta es la ruta del backend
+        //Esta es la ruta del backend
         .post("/usuario/login", {
-          email: this.email,
+          user: this.user,
           password: this.password,
         })
         .then((response) => {
           return response.data;
         })
-      //Se guarda el token de la sesion
+        //Se guarda el token de la sesion
         .then((data) => {
           this.$store.dispatch("keepToken", data.tokenReturn);
           swal(
@@ -114,12 +113,14 @@ export default {
   display: inline-flex;
 }
 .login {
-  border-radius: 25px;
+  border-radius: 80px;
 }
 .login--avatar {
-  display: inline-block;
-  border-radius: 50%;
-  background: #fff;
-  margin: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  min-width: 120px;
+  min-height: 120px;
 }
 </style>
