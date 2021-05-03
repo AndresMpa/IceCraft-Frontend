@@ -1,5 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import decode from "jwt-decode";
+import router from "../router/index";
 
 Vue.use(Vuex);
 
@@ -7,7 +9,7 @@ export default new Vuex.Store({
     state: {
         token: null,
         user: null,
-        rol: null,
+        tipo: null,
         id : null,
     },
     mutations: {
@@ -17,8 +19,8 @@ export default new Vuex.Store({
         setUser(state, user) {
             state.user = user;
         },
-        setRol(state, rol) {
-            state.rol = rol;
+        setTipo(state, tipo) {
+            state.tipo = tipo;
         },
         setId(state, id)
         {
@@ -29,11 +31,11 @@ export default new Vuex.Store({
         keepToken({ commit }, token) {
             commit("setToken", token);
             commit("setUser", decode(token));
-            commit("setRol", this.state.user.rol);
+            commit("setTipo", this.state.user.tipo);
             commit("setId", this.state.user.id);
-            //console.log(this.state.rol);
+            console.log(this.state.tipo);
             localStorage.setItem("token", token);
-            localStorage.setItem("rol", this.state.user.rol);
+            localStorage.setItem("tipo", this.state.user.tipo);
             localStorage.setItem("id", this.state.user.id);
         },
         autoLogin({ commit }) {
@@ -43,7 +45,7 @@ export default new Vuex.Store({
                 commit("setId",)
                 commit("setToken", token);
                 commit("setUser", decode(token));
-                commit("setRol", this.state.user.rol);
+                commit("setTipo", this.state.user.tipo);
             }
             if (this.state.user.rol === "Administrador") {
                 router.push({ path: 'home' }).catch(() => { });
@@ -53,11 +55,10 @@ export default new Vuex.Store({
         },
         close({ commit }) {
             commit("setId", null);
-            commit("setRol", null);
+            commit("setTipo", null);
             commit("setUser", null);
             commit("setToken", null);
-            commit("setId", null);
-            localStorage.removeItem("rol");
+            localStorage.removeItem("tipo");
             localStorage.removeItem("token");
             localStorage.removeItem("id");
         }

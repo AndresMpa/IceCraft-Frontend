@@ -29,9 +29,11 @@
                 ><!--@click.prevent="test">-->
                 Ingresar
               </v-btn>
-              <v-btn class="mr-4" @click.prevent="cancelLogin">
-                Cancelar
-              </v-btn>
+              <div v-if="this.$router.user">
+                <v-btn class="mr-4" @click.prevent="cancelLogin">
+                  Cancelar
+                </v-btn>
+              </div>
               <v-btn class="mr-4" @click.prevent="sendToCreateAccount">
                 Crear una cuenta
               </v-btn>
@@ -57,13 +59,15 @@ export default {
   },
   methods: {
     test() {
-      this.$router.push({ name: "Main" });
+      if (this.user == "Larrycañonga@gmail.com") {
+        this.$router.push({ name: "Main" });
+      }
     },
     loginUser() {
       axios
         //Esta es la ruta del backend
         .post("/usuario/login", {
-          user: this.user,
+          usuario: this.user,
           password: this.password,
         })
         .then((response) => {
@@ -78,17 +82,22 @@ export default {
             "success"
           );
           //Redireccionamientos
-          if (localStorage.getItem("rol") == "Administrador") {
-            this.$router.push({ name: "AdministrationMainContent" });
+          // tipo: 1 -> Cliente
+          // tipo: 2 -> Administracion
+          // tipo: 3 -> Root
+          if (localStorage.getItem("tipo") == "1") {
+            this.$router.push({ name: "Main" });
+          } else if (localStorage.getItem("tipo") == 2) {
+            this.$router.push({ name: "Admin" });
           } else {
-            this.$router.push({ name: "LayoutMain" });
+            this.$router.push({ name: "Root" });
           }
         })
-        .catch((error) => {
+        .catch((err) => {
           this.currentError = null;
-          if (error.response.status == 401) {
+          if (err.response.status == 401) {
             this.currentError = "Credenciales son incorrectas.";
-          } else if (error.response.status == 404) {
+          } else if (err.response.status == 404) {
             this.currentError = "El usuario no existe";
           } else {
             this.currentError = "Ocurrió un error con el servidor.";

@@ -177,6 +177,11 @@ const routes = [
         name: "User",
         component: () => import("../components/CRUDUser.vue"),
       },
+      {
+        path: "/",
+        name: "Root",
+        component: () => import("../components/CRUDRoot.vue")
+      }
     ],
   },
 ];
