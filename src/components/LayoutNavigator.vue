@@ -146,13 +146,12 @@
           <v-icon>mdi-lightbulb-on</v-icon>
         </v-btn>
       </div>
-      <!--<div v-if="this.rol">-->
-      <!--<v-btn @click="logOut" icon>-->
-      <!--<v-icon>logout</v-icon>-->
-      <!--</v-btn>-->
-      <!--</div>-->
-      <div>
-        <!-- v-else>-->
+      <div v-if="this.$store.token">
+        <v-btn @click="logOut" icon>
+          <v-icon>logout</v-icon>
+        </v-btn>
+      </div>
+      <div v-else>
         <v-btn @click="sendLogin" icon>
           <v-icon>login</v-icon>
         </v-btn>
@@ -187,6 +186,6 @@ export default {
       this.$router.push({ name: "Login" });
     },
   },
- };
+};
 </script>
 <style lang="css"></style>

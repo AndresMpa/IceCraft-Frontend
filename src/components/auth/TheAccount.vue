@@ -1,5 +1,5 @@
 <template>
-  <v-layout class="primary">
+  <v-layout class="blue-grey darken-4">
     <v-flex>
       <v-row align="center" align-content="center">
         <v-col align-self="center">
@@ -32,6 +32,7 @@
                 label="Item"
                 required
               ></v-select>
+              <v-autocomplete dense></v-autocomplete>
 
               <v-checkbox
                 v-model="checkbox"
@@ -55,7 +56,7 @@
               <v-btn class="mr-4" @click.prevent="sendLogin">
                 Cancelar
               </v-btn>
-           </v-form>
+            </v-form>
           </v-card>
         </v-col>
       </v-row>
@@ -101,7 +102,7 @@ export default {
     sendLogin() {
       this.$store.dispatch("close");
       this.$router.push({ name: "Login" });
-    }
+    },
   },
 };
 </script>

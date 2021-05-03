@@ -10,6 +10,21 @@ import LayoutBookPanel from './LayoutBookPanel.vue';
 export default {
   name: "LayoutBook",
   components: { LayoutBookPanel },
+  data() {
+    return {
+      stock: [],
+      headers: [
+        { text: "Nombre", value: "nombre", sortable: true },
+        { text: "Nombre", value: "nombre", sortable: true },
+        { text: "Nombre", value: "nombre", sortable: true },
+        { text: "Nombre", value: "nombre", sortable: true },
+        { text: "Nombre", value: "nombre", sortable: true },
+        { text: "Nombre", value: "nombre", sortable: true },
+        { text: "Nombre", value: "nombre", sortable: true },
+        { text: "Nombre", value: "nombre", sortable: true },
+      ]
+    }
+  }
 };
 </script>
 
