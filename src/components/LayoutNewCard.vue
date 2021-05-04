@@ -23,9 +23,7 @@
           size="14"
         ></v-rating>
 
-        <div class="grey--text ml-4">
-          Rarity: {{feed.rarity}}
-        </div>
+        <div class="grey--text ml-4">Rarity: {{ feed.rarity }}</div>
       </v-row>
 
       <div class="my-4 subtitle-1">$ • {{ feed.price }}, {{ feed.by }}</div>
@@ -80,7 +78,7 @@ export default {
       setTimeout(() => (this.loading = false), 2000);
     },
   },
-}
+};
 </script>
 <style lang="css">
 .profile {

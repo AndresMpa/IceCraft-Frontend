@@ -10,7 +10,7 @@
       hide-default-footer
     >
       <template v-slot:header>
-        <v-toolbar dark color="blue darken-3" class="mb-1">
+        <v-toolbar dark color="blue darken-3" class="mb-3">
           <v-text-field
             v-model="search"
             clearable
@@ -49,19 +49,18 @@
         <v-row>
           <v-col
             v-for="item in props.items"
-            :key="item.name"
+            :key="item.Titulo"
             cols="12"
             sm="6"
             md="4"
             lg="3"
           >
-            <v-card>
+          <v-card class="containigCard">
+              <img src="https://picsum.photos/360/360" alt="test" srcset="" />
               <v-card-title class="subheading font-weight-bold">
-                {{ item.name }}
+                {{ item.Titulo }}
               </v-card-title>
-
               <v-divider></v-divider>
-
               <v-list dense>
                 <v-list-item v-for="(key, index) in filteredKeys" :key="index">
                   <v-list-item-content
@@ -84,7 +83,7 @@
 
       <template v-slot:footer>
         <v-row class="mt-2" align="center" justify="center">
-          <span class="grey--text">Items per page</span>
+          <span class="grey--text">Libros por pagina</span>
           <v-menu offset-y>
             <template v-slot:activator="{ on, attrs }">
               <v-btn
@@ -116,7 +115,7 @@
             class="mr-4
             grey--text"
           >
-            Page {{ page }} of {{ numberOfPages }}
+            Pagina {{ page }} de {{ numberOfPages }}
           </span>
           <v-btn
             fab
@@ -141,7 +140,7 @@ export default {
   name: "LayoutBookPanel",
   data() {
     return {
-      itemsPerPageArray: [4, 8, 12],
+      itemsPerPageArray: [8, 12, 24],
       search: "",
       filter: {},
       sortDesc: false,
@@ -149,128 +148,33 @@ export default {
       itemsPerPage: 4,
       sortBy: "name",
       keys: [
-        "Name",
-        "Calories",
-        "Fat",
-        "Carbs",
-        "Protein",
-        "Sodium",
-        "Calcium",
-        "Iron",
+        "Titulo",
+        "Autor",
+        "Genero",
+        "Paginas",
+        "Editorial",
+        "issn",
+        "Idioma",
+        "Publicado",
+        "Estado",
+        "Precio",
+        "Cantidad",
+        "Imagen",
       ],
-      //      keys: [
-      //        "Title",
-      //        "Author",
-      //        "Date",
-      //        "LitGenre",
-      //        "Pages",
-      //        "issn",
-      //        "Languaje",
-      //        "Status",
-      //        "Quantity"
-      //        "Editorial",
-      //        "Price",
-      //      ],
       items: [
         {
-          name: "Frozen Yogurt",
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          sodium: 87,
-          calcium: "14%",
-          iron: "1%",
-        },
-        {
-          name: "Ice cream sandwich",
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          sodium: 129,
-          calcium: "8%",
-          iron: "1%",
-        },
-        {
-          name: "Eclair",
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          sodium: 337,
-          calcium: "6%",
-          iron: "7%",
-        },
-        {
-          name: "Cupcake",
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          sodium: 413,
-          calcium: "3%",
-          iron: "8%",
-        },
-        {
-          name: "Gingerbread",
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          sodium: 327,
-          calcium: "7%",
-          iron: "16%",
-        },
-        {
-          name: "Jelly bean",
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          sodium: 50,
-          calcium: "0%",
-          iron: "0%",
-        },
-        {
-          name: "Lollipop",
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          sodium: 38,
-          calcium: "0%",
-          iron: "2%",
-        },
-        {
-          name: "Honeycomb",
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          sodium: 562,
-          calcium: "0%",
-          iron: "45%",
-        },
-        {
-          name: "Donut",
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          sodium: 326,
-          calcium: "2%",
-          iron: "22%",
-        },
-        {
-          name: "KitKat",
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          sodium: 54,
-          calcium: "12%",
-          iron: "6%",
+          Titulo: "Frozen Yogurt",
+          Autor: 159,
+          Genero: 6.0,
+          Paginas: 24,
+          Editorial: 4.0,
+          issn: 87,
+          Idioma: "14%",
+          Publicado: "1%",
+          Estado: "Bueno",
+          Precio: "30000",
+          Cantidad: "401",
+          Imagen: "Default",
         },
       ],
     };
@@ -280,7 +184,7 @@ export default {
       return Math.ceil(this.items.length / this.itemsPerPage);
     },
     filteredKeys() {
-      return this.keys.filter((key) => key !== "Name");
+      return this.keys.filter((key) => key !== "Titulo");
     },
   },
   methods: {
@@ -297,4 +201,8 @@ export default {
 };
 </script>
 
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+.containigCard {
+  min-width: 360px;
+}
+</style>
