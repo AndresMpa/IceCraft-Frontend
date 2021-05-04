@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Libros</h1>
+    <!--<h1>Libros</h1>-->
     <layout-book-panel></layout-book-panel>
   </div>
 </template>

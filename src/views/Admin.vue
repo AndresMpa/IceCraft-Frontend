@@ -1,19 +1,29 @@
 <template>
   <div>
     <admin-navigator />
-    <admin-main />
+    <admin-home />
   </div>
 </template>
+
 <script>
-import AdminMain from '../components/AdminMain.vue';
-import AdminNavigator from '../components/AdminNavigator.vue';
+import AdminNavigator from "../components/AdminNavigator.vue";
+import AdminHome from "../components/AdminHome.vue";
 export default {
-  components: { AdminNavigator, AdminMain },
   name: "Admin",
-  data() {
-    return {
-      drawer: null,
-    };
+  components: {
+    AdminNavigator,
+    AdminHome,
+  },
+  methods: {
+    sendAdmin() {
+      this.$router.push({ name: "AdminMain" }).catch(() => {
+        console.log("Admin");
+      });
+    },
+  },
+  //Hooks
+  created() {
+    this.sendAdmin();
   },
 };
 </script>

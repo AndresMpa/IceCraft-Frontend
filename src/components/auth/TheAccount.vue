@@ -10,29 +10,48 @@
             class="overflow-hidden info pa-12 mt-12 login"
           >
             <v-form ref="form" v-model="valid" lazy-validation>
-              <v-text-field
-                v-model="name"
-                :counter="this.userName"
-                :rules="nameRules"
-                label="Nombre de usuario"
-                required
-              ></v-text-field>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" sm="12" md="6">
+                    <v-text-field
+                      v-model="name"
+                      :rules="nameRules"
+                      :counter="this.userName"
+                      label="Ingresa tus nombres"
+                      required
+                    ></v-text-field>
+                    <v-text-field
+                      v-model="email"
+                      :rules="userRules"
+                      label="Ingresa tu nombre de usuario"
+                      required
+                    ></v-text-field>
+                    <v-select
+                      :rules="[(v) => !!v || 'Selecciona una categoria']"
+                      label="Indica tu genero literario favorito"
+                      v-model="select"
+                      :items="items"
+                      required
+                    ></v-select>
+                  </v-col>
 
-              <v-text-field
-                v-model="email"
-                :rules="emailRules"
-                label="Correo electronico"
-                required
-              ></v-text-field>
-
-              <v-select
-                v-model="select"
-                :items="items"
-                :rules="[(v) => !!v || 'Selecciona una categoria']"
-                label="Item"
-                required
-              ></v-select>
-              <v-autocomplete dense></v-autocomplete>
+                  <v-col cols="12" sm="12" md="6">
+                    <v-text-field
+                      v-model="lastname"
+                      :rules="lastnamesRules"
+                      :counter="this.userName"
+                      label="Ingresa tus apellidos"
+                      required
+                    ></v-text-field>
+                    <v-text-field
+                      v-model="email"
+                      :rules="emailRules"
+                      label="Correo electronico"
+                      required
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+              </v-container>
 
               <v-checkbox
                 v-model="checkbox"
@@ -44,6 +63,7 @@
                 label="Acepto terminos y concondiciones"
                 required
               ></v-checkbox>
+
               <v-btn class="mr-4" @click.prevent="validate" :disabled="!valid">
                 Enviar
               </v-btn>
@@ -68,24 +88,54 @@
 export default {
   data: () => ({
     valid: true,
+    dni: "",
     name: "",
-    userName: 25,
+    lastname: "",
+    birthDate: "",
+    place: "",
+    genero: "",
+    house: "",
+    topic: "",
+    user: "",
+    password: "",
+    //Users names
+    userName: 50,
     nameRules: [
-      (v) => !!v || "Necesitas un nombre de usuario",
-      (v) =>
-        (v && v.length <= this.userName) ||
+      (value) => !!value || "Necesitas un nombre de usuario",
+      (value) =>
+        (value && value.length <= this.userName) ||
         "el nombre de usuario debe tener menos de " +
           this.userName +
           " caracteres",
     ],
+    //Users lastnames
+    lastnamesRules: [
+      (value) => !!value || "Necesitas un nombre de usuario",
+      (value) =>
+        (value && value.length <= this.userName) ||
+        "el nombre de usuario debe tener menos de " +
+          this.userName +
+          " caracteres",
+    ],
+    //email list
     email: "",
     emailRules: [
-      (v) => !!v || "Necesitamos un e-mail",
-      (v) =>
-        /.+@.+\..+/.test(v) || "Hay algo raro con tu email, intenta con otro",
+      (value) => !!value || "Necesitamos un e-mail",
+      (value) =>
+        /.+@.+\..+/.test(value) ||
+        "Hay algo raro con tu email, intenta con otro",
     ],
+    //Item list
     select: null,
-    items: ["Item 1", "Item 2", "Item 3", "Item 4"],
+    items: [
+      "Policial",
+      "Aventura",
+      "Fantasía",
+      "Suspenso",
+      "Juvenil",
+      "Romance",
+      "Horror",
+    ],
     checkbox: false,
   }),
 

@@ -25,11 +25,11 @@
                 label="Contraseña"
                 type="password"
               ></v-text-field>
-              <v-btn class="mr-4" @click.prevent="loginUser"
-                ><!--@click.prevent="test">-->
+              <v-btn class="mr-4" @click.prevent="loginUser">
+                <!--@click.prevent="test">-->
                 Ingresar
               </v-btn>
-              <div v-if="this.$router.user">
+              <div v-if="this.loged">
                 <v-btn class="mr-4" @click.prevent="cancelLogin">
                   Cancelar
                 </v-btn>
@@ -53,6 +53,7 @@ export default {
   data() {
     return {
       user: "",
+      loged: "",
       password: "",
       currentError: null,
     };
@@ -88,7 +89,7 @@ export default {
           if (localStorage.getItem("tipo") == "1") {
             this.$router.push({ name: "Main" });
           } else if (localStorage.getItem("tipo") == 2) {
-            this.$router.push({ name: "Admin" });
+            this.$router.push({ name: "AdminMain" });
           } else {
             this.$router.push({ name: "Root" });
           }
@@ -112,6 +113,10 @@ export default {
       this.$store.dispatch("close");
       this.$router.push({ name: "Main" });
     },
+    created: () => {
+      this.loged = localStorage.getItem('token');
+      console.log("Token: " + this.loged)
+    }
   },
 };
 </script>
