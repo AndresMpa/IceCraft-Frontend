@@ -28,6 +28,16 @@ const routes = [
     },
   },
 
+  // Account
+  {
+    //Vista
+    path: "/root",
+    name: "Root",
+    component: () => import("../components/Root.vue"),
+    meta: {
+      public: true,
+    },
+  },
   // Home
   {
     // Vista
@@ -138,50 +148,73 @@ const routes = [
     name: "Admin",
     component: () => import("../views/Admin.vue"),
     meta: {
-      //auth: true,
-      public: true,
+      auth: true,
+      //public: true,
     },
     children: [
       {
-        path: "/principal",
+        path: "/administrar",
         name: "AdminMain",
         component: () => import("../components/AdminMain.vue"),
+        meta: {
+          auth: true,
+          //public: true,
+        },
       },
       {
         path: "/stock",
         name: "Stock",
         component: () => import("../components/CRUDStock.vue"),
+        meta: {
+          auth: true,
+          //public: true,
+        },
       },
       {
         path: "/articulo",
         name: "Product",
         component: () => import("../components/CRUDProduct.vue"),
+        meta: {
+          auth: true,
+          //public: true,
+        },
       },
       {
         path: "/categorias",
         name: "Category",
         component: () => import("../components/CRUDCategory.vue"),
+        meta: {
+          auth: true,
+          //public: true,
+        },
       },
       {
         path: "/venta",
         name: "Sell",
         component: () => import("../components/CRUDSell.vue"),
+        meta: {
+          auth: true,
+          //public: true,
+        },
       },
       {
         path: "/cliente",
         name: "Client",
         component: () => import("../components/CRUDClient.vue"),
+        meta: {
+          auth: true,
+          //public: true,
+        },
       },
       {
         path: "/usuario",
         name: "User",
         component: () => import("../components/CRUDUser.vue"),
+        meta: {
+          auth: true,
+          //public: true,
+        },
       },
-      {
-        path: "/",
-        name: "Root",
-        component: () => import("../components/CRUDRoot.vue")
-      }
     ],
   },
 ];
@@ -199,11 +232,12 @@ router.beforeEach((to, from, next) => {
     next();
   } else if (store.state.user) {
     if (to.matched.some((record) => record.meta.auth)) {
-      console.log(store.state.user);
+      //console.log(store.state.user);
       next();
     }
   } else {
-    next({ name: "Administration" });
+    //next({ name: "Administracion" });
+    console.log("ok this is weird");
   }
 });
 

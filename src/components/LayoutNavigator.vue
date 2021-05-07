@@ -146,16 +146,9 @@
           <v-icon>mdi-lightbulb-on</v-icon>
         </v-btn>
       </div>
-      <div v-if="this.$store.token">
-        <v-btn @click="logOut" icon>
-          <v-icon>logout</v-icon>
-        </v-btn>
-      </div>
-      <div v-else>
-        <v-btn @click="sendLogin" icon>
-          <v-icon>login</v-icon>
-        </v-btn>
-      </div>
+      <v-btn @click="logOut" icon>
+        <v-icon>logout</v-icon>
+      </v-btn>
     </v-app-bar>
   </div>
 </template>
@@ -180,9 +173,6 @@ export default {
     },
     logOut() {
       this.$store.dispatch("close");
-      this.$router.push({ name: "Main" });
-    },
-    sendLogin() {
       this.$router.push({ name: "Login" });
     },
   },

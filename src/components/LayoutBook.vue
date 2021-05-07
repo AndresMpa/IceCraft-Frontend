@@ -1,12 +1,13 @@
 <template>
   <div>
-    <h1>Libros</h1>
-    <layout-book-panel></layout-book-panel>
+    <!--<h1>Libros</h1>-->
+    <layout-book-panel :book="stock"></layout-book-panel>
   </div>
 </template>
 
 <script>
-import LayoutBookPanel from './LayoutBookPanel.vue';
+import LayoutBookPanel from "./LayoutBookPanel.vue";
+import axios from "axios";
 export default {
   name: "LayoutBook",
   components: { LayoutBookPanel },
@@ -14,17 +15,40 @@ export default {
     return {
       stock: [],
       headers: [
-        { text: "Nombre", value: "nombre", sortable: true },
-        { text: "Nombre", value: "nombre", sortable: true },
-        { text: "Nombre", value: "nombre", sortable: true },
-        { text: "Nombre", value: "nombre", sortable: true },
-        { text: "Nombre", value: "nombre", sortable: true },
-        { text: "Nombre", value: "nombre", sortable: true },
-        { text: "Nombre", value: "nombre", sortable: true },
-        { text: "Nombre", value: "nombre", sortable: true },
-      ]
-    }
-  }
+        { text: "Titulo", value: "titulo", sortable: false },
+        { text: "Autor", value: "autor", sortable: false },
+        { text: "Genero", value: "genero", sortable: false },
+        { text: "Paginas", value: "numeroPagina", sortable: false },
+        { text: "Editorial", value: "editorial", sortable: false },
+        { text: "issn", value: "issn", sortable: false },
+        { text: "Idioma", value: "idioma", sortable: false },
+        { text: "Publicado", value: "fechaPublicacion", sortable: false },
+        { text: "Estado", value: "estado", sortable: false },
+        { text: "Precio", value: "precio", sortable: false },
+        { text: "Cantidad", value: "cantidad", sortable: false },
+        { text: "Imagen", value: "imagen", sortable: false },
+      ],
+    };
+  },
+  methods: {
+    loadInfo() {
+      let my = this;
+      let header = { Token: this.$store.state.Token };
+      let configuration = { headers: header };
+      axios
+        .get("libro/list", configuration)
+        .then(function(response) {
+          console.log(response.data);
+          my.stock = response.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+  },
+  created() {
+    this.loadInfo();
+  },
 };
 </script>
 

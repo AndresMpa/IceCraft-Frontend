@@ -148,7 +148,7 @@ export default {
     },
     logOut() {
       this.$store.dispatch("close");
-      this.$router.push({ path: "principal" });
+      this.$router.push({ path: "login" });
     },
   },
 };
