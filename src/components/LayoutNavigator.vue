@@ -173,7 +173,7 @@ export default {
     },
     logOut() {
       this.$store.dispatch("close");
-      this.$router.push({ name: "Main" });
+      this.$router.push({ name: "Login" });
     },
   },
 };

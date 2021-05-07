@@ -25,16 +25,10 @@
                 label="Contraseña"
                 type="password"
               ></v-text-field>
-              <v-btn class="mr-4" @click.prevent="loginUser">
-                <!--@click.prevent="test">-->
+              <v-btn class="d-inline-block w-auto mr-4" @click.prevent="loginUser">
                 Ingresar
               </v-btn>
-              <div v-if="this.loged">
-                <v-btn class="mr-4" @click.prevent="cancelLogin">
-                  Cancelar
-                </v-btn>
-              </div>
-              <v-btn class="mr-4" @click.prevent="sendToCreateAccount">
+              <v-btn class="d-inline-block w-auto mr-4" @click.prevent="sendToCreateAccount">
                 Crear una cuenta
               </v-btn>
             </form>
@@ -88,10 +82,12 @@ export default {
           // tipo: 3 -> Root
           if (localStorage.getItem("tipo") == "1") {
             this.$router.push({ name: "Main" });
-          } else if (localStorage.getItem("tipo") == 2) {
+          } else if (localStorage.getItem("tipo") == "2") {
             this.$router.push({ name: "AdminMain" });
-          } else {
+          } else if (localStorage.getItem("tipo") == "3") {
             this.$router.push({ name: "Root" });
+          } else {
+            console.log("404")
           }
         })
         .catch((err) => {
@@ -136,5 +132,12 @@ export default {
   width: 20%;
   min-width: 120px;
   min-height: 120px;
+}
+
+@media screen and (max-width: 768px) {
+  button {
+    width: 100%;
+    margin: 5px
+  }
 }
 </style>

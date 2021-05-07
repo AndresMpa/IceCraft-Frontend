@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-data-iterator
-      :items="items"
+      :items="book"
       :items-per-page.sync="itemsPerPage"
       :page.sync="page"
       :search="search"
@@ -10,15 +10,16 @@
       hide-default-footer
     >
       <template v-slot:header>
-        <v-toolbar dark color="blue darken-3" class="mb-3">
+        <v-toolbar dark color="blue darken-3" class="mb-5">
           <v-text-field
-            v-model="search"
-            clearable
             flat
-            solo-inverted
+            clearable
+            class="bars"
             hide-details
+            solo-inverted
+            label="Buscar"
+            v-model="search"
             prepend-inner-icon="mdi-magnify"
-            label="Search"
           ></v-text-field>
           <v-spacer></v-spacer>
           <template v-if="$vuetify.breakpoint.mdAndUp">
@@ -26,11 +27,12 @@
             <v-select
               v-model="sortBy"
               flat
-              solo-inverted
+              class="bars"
               hide-details
               :items="keys"
+              solo-inverted
+              label="Filtrar por"
               prepend-inner-icon="mdi-magnify"
-              label="Sort by"
             ></v-select>
             <v-spacer></v-spacer>
             <v-btn-toggle v-model="sortDesc" mandatory>
@@ -55,10 +57,10 @@
             md="4"
             lg="3"
           >
-          <v-card class="containigCard">
-              <img src="https://picsum.photos/360/360" alt="test" srcset="" />
+            <v-card class="containigCard">
+              <img :src="item.imagen" alt="test" srcset="" />
               <v-card-title class="subheading font-weight-bold">
-                {{ item.Titulo }}
+                {{ item.titulo }}
               </v-card-title>
               <v-divider></v-divider>
               <v-list dense>
@@ -83,52 +85,63 @@
 
       <template v-slot:footer>
         <v-row class="mt-2" align="center" justify="center">
-          <span class="grey--text">Libros por pagina</span>
-          <v-menu offset-y>
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                dark
-                text
-                color="primary"
-                class="ml-2"
-                v-bind="attrs"
-                v-on="on"
-              >
-                {{ itemsPerPage }}
-                <v-icon>mdi-chevron-down</v-icon>
-              </v-btn>
-            </template>
-            <v-list>
-              <v-list-item
-                v-for="(number, index) in itemsPerPageArray"
-                :key="index"
-                @click="updateItemsPerPage(number)"
-              >
-                <v-list-item-title>{{ number }}</v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-menu>
+          <div class="d-inline-block">
+            <span class="grey--text">Libros por pagina</span>
+            <v-menu offset-y>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  dark
+                  text
+                  color="primary"
+                  class="ml-2"
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  {{ itemsPerPage }}
+                  <v-icon>mdi-chevron-down</v-icon>
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item
+                  v-for="(number, index) in itemsPerPageArray"
+                  :key="index"
+                  @click="updateItemsPerPage(number)"
+                >
+                  <v-list-item-title>{{ number }}</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </div>
 
           <v-spacer></v-spacer>
 
-          <span
-            class="mr-4
+          <div class="d-inline-block">
+            <span
+              class="mr-4
             grey--text"
-          >
-            Pagina {{ page }} de {{ numberOfPages }}
-          </span>
-          <v-btn
-            fab
-            dark
-            color="blue darken-3"
-            class="mr-1"
-            @click="formerPage"
-          >
-            <v-icon>mdi-chevron-left</v-icon>
-          </v-btn>
-          <v-btn fab dark color="blue darken-3" class="ml-1" @click="nextPage">
-            <v-icon>mdi-chevron-right</v-icon>
-          </v-btn>
+            >
+              Pagina {{ page }} de {{ numberOfPages }}
+            </span>
+
+            <v-btn
+              fab
+              dark
+              color="blue darken-3"
+              class="mr-1 "
+              @click="formerPage"
+            >
+              <v-icon>mdi-chevron-left</v-icon>
+            </v-btn>
+            <v-btn
+              fab
+              dark
+              color="blue darken-3"
+              class="ml-1 d-inline-block"
+              @click="nextPage"
+            >
+              <v-icon>mdi-chevron-right</v-icon>
+            </v-btn>
+          </div>
         </v-row>
       </template>
     </v-data-iterator>
@@ -138,15 +151,19 @@
 <script>
 export default {
   name: "LayoutBookPanel",
+  props: {
+    book: Array,
+  },
   data() {
     return {
       itemsPerPageArray: [8, 12, 24],
+      sortDesc: false,
+      itemsPerPage: 8,
+      sortBy: "name",
+      items: [],
       search: "",
       filter: {},
-      sortDesc: false,
       page: 1,
-      itemsPerPage: 4,
-      sortBy: "name",
       keys: [
         "Titulo",
         "Autor",
@@ -159,33 +176,8 @@ export default {
         "Estado",
         "Precio",
         "Cantidad",
-        "Imagen",
-      ],
-      items: [
-        {
-          Titulo: "Frozen Yogurt",
-          Autor: 159,
-          Genero: 6.0,
-          Paginas: 24,
-          Editorial: 4.0,
-          issn: 87,
-          Idioma: "14%",
-          Publicado: "1%",
-          Estado: "Bueno",
-          Precio: "30000",
-          Cantidad: "401",
-          Imagen: "Default",
-        },
       ],
     };
-  },
-  computed: {
-    numberOfPages() {
-      return Math.ceil(this.items.length / this.itemsPerPage);
-    },
-    filteredKeys() {
-      return this.keys.filter((key) => key !== "Titulo");
-    },
   },
   methods: {
     nextPage() {
@@ -198,11 +190,31 @@ export default {
       this.itemsPerPage = number;
     },
   },
+  computed: {
+    numberOfPages() {
+      return Math.ceil(this.book.length / this.itemsPerPage);
+    },
+    filteredKeys() {
+      return this.keys.filter((key) => key !== "Titulo");
+    },
+  },
 };
 </script>
 
 <style lang="css" scoped>
+div .bars {
+  margin: 0 5% 0 0%;
+}
+
 .containigCard {
   min-width: 360px;
+  margin-left: 5%;
+}
+
+@media screen and (max-width: 768px) {
+  div .bars {
+    margin: 0%;
+    width: 100%;
+  }
 }
 </style>

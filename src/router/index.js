@@ -28,6 +28,16 @@ const routes = [
     },
   },
 
+  // Account
+  {
+    //Vista
+    path: "/root",
+    name: "Root",
+    component: () => import("../components/Root.vue"),
+    meta: {
+      public: true,
+    },
+  },
   // Home
   {
     // Vista
@@ -200,15 +210,6 @@ const routes = [
         path: "/usuario",
         name: "User",
         component: () => import("../components/CRUDUser.vue"),
-        meta: {
-          auth: true,
-          //public: true,
-        },
-      },
-      {
-        path: "/root",
-        name: "Root",
-        component: () => import("../components/CRUDRoot.vue"),
         meta: {
           auth: true,
           //public: true,

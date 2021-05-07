@@ -1,12 +1,13 @@
 <template>
   <div>
     <!--<h1>Libros</h1>-->
-    <layout-book-panel :books="stock"></layout-book-panel>
+    <layout-book-panel :book="stock"></layout-book-panel>
   </div>
 </template>
 
 <script>
 import LayoutBookPanel from "./LayoutBookPanel.vue";
+import axios from "axios";
 export default {
   name: "LayoutBook",
   components: { LayoutBookPanel },
@@ -31,14 +32,16 @@ export default {
   },
   methods: {
     loadInfo() {
+      let my = this;
       let header = { Token: this.$store.state.Token };
       let configuration = { headers: header };
       axios
-        .get('libro/list', configuration)
-        .then(function (response) { 
-          this.stock = response.data; 
-        }
-        ).catch(function (error) {
+        .get("libro/list", configuration)
+        .then(function(response) {
+          console.log(response.data);
+          my.stock = response.data;
+        })
+        .catch(function(error) {
           console.log(error);
         });
     },
