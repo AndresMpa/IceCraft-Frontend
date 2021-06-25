@@ -149,7 +149,6 @@ const routes = [
     component: () => import("../views/Admin.vue"),
     meta: {
       auth: true,
-      //public: true,
     },
     children: [
       {
@@ -158,7 +157,6 @@ const routes = [
         component: () => import("../components/AdminMain.vue"),
         meta: {
           auth: true,
-          //public: true,
         },
       },
       {
@@ -167,7 +165,6 @@ const routes = [
         component: () => import("../components/CRUDStock.vue"),
         meta: {
           auth: true,
-          //public: true,
         },
       },
       {
@@ -176,7 +173,6 @@ const routes = [
         component: () => import("../components/CRUDProduct.vue"),
         meta: {
           auth: true,
-          //public: true,
         },
       },
       {
@@ -185,7 +181,6 @@ const routes = [
         component: () => import("../components/CRUDCategory.vue"),
         meta: {
           auth: true,
-          //public: true,
         },
       },
       {
@@ -194,7 +189,6 @@ const routes = [
         component: () => import("../components/CRUDSell.vue"),
         meta: {
           auth: true,
-          //public: true,
         },
       },
       {
@@ -203,7 +197,6 @@ const routes = [
         component: () => import("../components/CRUDClient.vue"),
         meta: {
           auth: true,
-          //public: true,
         },
       },
       {
@@ -212,7 +205,6 @@ const routes = [
         component: () => import("../components/CRUDUser.vue"),
         meta: {
           auth: true,
-          //public: true,
         },
       },
     ],
@@ -236,8 +228,8 @@ router.beforeEach((to, from, next) => {
       next();
     }
   } else {
-    //next({ name: "Administracion" });
-    console.log("ok this is weird");
+    next({ name: "Admin" });
+    //console.log("ok this is weird");
   }
 });
 

@@ -8,11 +8,12 @@ import vuetify from "./plugins/vuetify";
 Vue.config.productionTip = false;
 const base = axios.create({
   //Esto sale de heroku
-  //baseURL: "https://<Tellez-y-la-bd-?>/api"
+  baseURL: "https://quiet-ocean-09627.herokuapp.com/api"
+
 
   //Esta URL solo será usado mientras corremos las pruebas
   //es necesario hacer deploy a heroku
-  baseURL: "http://localhost:3000/api"
+  //baseURL: "http://localhost:3000/api"
 
 })
 
@@ -22,7 +23,7 @@ Vue.prototype.$http = base;
 
 //Esta URL solo será usado mientras corremos las pruebas
 //es necesario hacer deploy a heroku
-axios.defaults.baseURL = "http://localhost:3000/api";
+axios.defaults.baseURL = "https://quiet-ocean-09627.herokuapp.com/api";
 
 new Vue({
   router,

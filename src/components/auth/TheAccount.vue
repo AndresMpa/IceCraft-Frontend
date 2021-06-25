@@ -16,20 +16,20 @@
                     <v-text-field
                       v-model="name"
                       :rules="nameRules"
-                      :counter="this.userName"
                       label="Ingresa tus nombres"
                       required
                     ></v-text-field>
                     <v-text-field
-                      v-model="email"
+                      v-model="user"
                       :rules="userRules"
+                      :counter="userName"
                       label="Ingresa tu nombre de usuario"
                       required
                     ></v-text-field>
                     <v-select
                       :rules="[(v) => !!v || 'Selecciona una categoria']"
                       label="Indica tu genero literario favorito"
-                      v-model="select"
+                      v-model="topic"
                       :items="items"
                       required
                     ></v-select>
@@ -39,7 +39,6 @@
                     <v-text-field
                       v-model="lastname"
                       :rules="lastnamesRules"
-                      :counter="this.userName"
                       label="Ingresa tus apellidos"
                       required
                     ></v-text-field>
@@ -63,12 +62,8 @@
                 label="Acepto terminos y concondiciones"
                 required
               ></v-checkbox>
-
               <v-btn class="mr-4" @click.prevent="validate" :disabled="!valid">
                 Enviar
-              </v-btn>
-              <v-btn class="mr-4" @click.prevent="resetValidation">
-                Validar
               </v-btn>
               <v-btn class="mr-4" @click.prevent="reset">
                 Borrar
@@ -98,24 +93,16 @@ export default {
     topic: "",
     user: "",
     password: "",
-    //Users names
     userName: 50,
-    nameRules: [
-      (value) => !!value || "Necesitas un nombre de usuario",
-      (value) =>
-        (value && value.length <= this.userName) ||
-        "el nombre de usuario debe tener menos de " +
-          this.userName +
-          " caracteres",
-    ],
+    //Users names
+    nameRules: [(value) => !!value || "Necesitamos tus nombres"],
     //Users lastnames
-    lastnamesRules: [
+    lastnamesRules: [(value) => !!value || "Necesitamos tus apellidos"],
+    userRules: [
       (value) => !!value || "Necesitas un nombre de usuario",
       (value) =>
-        (value && value.length <= this.userName) ||
-        "el nombre de usuario debe tener menos de " +
-          this.userName +
-          " caracteres",
+        (value && value.length <= 50) ||
+        "El nombre de usuario debe tener menos de 50 caracteres",
     ],
     //email list
     email: "",
@@ -142,12 +129,10 @@ export default {
   methods: {
     validate() {
       this.$refs.form.validate();
+      this.$router.push({ name: "Login" });
     },
     reset() {
       this.$refs.form.reset();
-    },
-    resetValidation() {
-      this.$refs.form.resetValidation();
     },
     sendLogin() {
       this.$store.dispatch("close");

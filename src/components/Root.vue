@@ -1,7 +1,7 @@
 <template>
-  <v-layout align-start>
-    <v-flex>
-      <v-toolbar text color="white">
+  <v-layout class="blue-grey darken-4">
+    <v-flex style="width: 90%; margin: auto;">
+      <v-toolbar style="width: 90%; margin: auto;" text color="white">
         <v-toolbar-title>Crear usuario</v-toolbar-title>
         <v-divider class="mx-2" inset vertical></v-divider>
         <v-spacer></v-spacer>
@@ -17,7 +17,7 @@
         <v-dialog v-model="dialog" max-width="500px">
           <template v-slot:activator="{ on }">
             <v-btn color="primary" dark class="mb-2" v-on="on"
-              >Nueva Categoría</v-btn
+              >Nuevo usuario</v-btn
             >
           </template>
           <v-card>
@@ -28,21 +28,25 @@
               <v-container grid-list-md>
                 <v-layout wrap>
                   <v-flex xs12 sm12 md12>
+                    <v-text-field v-model="name" label="Nombre"></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm12 md12>
                     <v-text-field
-                      v-model="nombre"
-                      label="Nombre"
+                      v-model="lastName"
+                      label="Apellido"
                     ></v-text-field>
                   </v-flex>
                   <v-flex xs12 sm12 md12>
-                    <v-textarea
-                      v-model="descripcion"
-                      color="teal"
-                      counter
-                      maxlength="255"
-                      label="Descripcion"
-                      hint="Agregar una descripcion de la categoría"
-                    >
-                    </v-textarea>
+                    <v-text-field v-model="email" label="Correo"></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm12 md12>
+                    <v-text-field v-model="password" label="Contraseña"></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm12 md12>
+                    <v-text-field v-model="userName" label="Usuario"></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm12 md12>
+                    <v-text-field v-model="charge" label="Cargo"></v-text-field>
                   </v-flex>
                   <v-flex xs12 sm12 md12 v-show="valida">
                     <div
@@ -65,14 +69,14 @@
         <v-dialog v-model="adModal" max-width="290">
           <v-card>
             <v-card-title class="headline" v-if="adAccion == 1">
-              Activar Item
+              Activar usuario
             </v-card-title>
             <v-card-title class="headline" v-if="adAccion == 2">
-              Desactivar Item
+              Desactivar usuario
             </v-card-title>
             <v-card-text>
               Estás a punto de <span v-if="adAccion == 1">activar </span>
-              <span v-if="adAccion == 2">desactivar </span> el item
+              <span v-if="adAccion == 2">desactivar </span> el usuario
               {{ adNombre }}
             </v-card-text>
             <v-card-actions>
@@ -109,6 +113,7 @@
         :items="categorias"
         :search="search"
         class="elevation-1"
+        style="width: 90%; margin: auto;"
       >
         <template v-slot:[`item.opciones`]="{ item }">
           <v-icon small class="mr-2" @click="editItem(item)"> edit </v-icon>
@@ -133,7 +138,7 @@
           </div>
         </template>
         <template v-slot:no-data>
-          <v-btn color="primary" @click="listar()">Resetear</v-btn>
+          <v-btn color="primary" @click="listar()">Recargar</v-btn>
         </template>
       </v-data-table>
     </v-flex>
@@ -149,9 +154,9 @@ export default {
       categorias: [],
       headers: [
         { text: "Nombre", value: "nombre", sortable: true },
-        { text: "Descripción", value: "descripcion", sortable: false },
-        { text: "Estado", value: "estado", sortable: false },
-        { text: "Opciones", value: "opciones", sortable: false },
+        { text: "Apellido", value: "apellido", sortable: false },
+        { text: "Correo", value: "correo", sortable: false },
+        { text: "Usuario", value: "usuario", sortable: false },
       ],
       editedIndex: -1,
       id: "",
@@ -185,10 +190,10 @@ export default {
       let configuracion = { headers: header };
       axios
         .get("categoria/list", configuracion)
-        .then(function (response) {
+        .then(function(response) {
           me.categorias = response.data;
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     },
@@ -234,13 +239,13 @@ export default {
             { id: this.id, nombre: this.nombre, descripcion: this.descripcion },
             configuracion
           )
-          .then(function (response) {
+          .then(function(response) {
             me.limpiar();
             me.close();
             me.listar();
             console.log(response.data);
           })
-          .catch(function (error) {
+          .catch(function(error) {
             console.log(error);
           });
       } else {
@@ -251,13 +256,13 @@ export default {
             { nombre: this.nombre, descripcion: this.descripcion },
             configuracion
           )
-          .then(function (response) {
+          .then(function(response) {
             me.limpiar();
             me.close();
             me.listar();
             console.log(response.data);
           })
-          .catch(function (error) {
+          .catch(function(error) {
             console.log(error);
           });
       }
@@ -291,7 +296,7 @@ export default {
 
       axios
         .put("categoria/activate", { id: this.adId }, configuracion)
-        .then(function (response) {
+        .then(function(response) {
           me.adModal = 0;
           me.adAccion = 0;
           me.adNombre = "";
@@ -300,7 +305,7 @@ export default {
           me.limpiar();
           console.log(response.data);
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     },
@@ -310,7 +315,7 @@ export default {
       let configuracion = { headers: header };
       axios
         .put("categoria/deactivate", { id: this.adId }, configuracion)
-        .then(function (response) {
+        .then(function(response) {
           me.adModal = 0;
           me.adAccion = 0;
           me.adNombre = "";
@@ -318,7 +323,7 @@ export default {
           me.listar();
           console.log(response.data);
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     },
