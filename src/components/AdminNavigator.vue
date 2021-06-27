@@ -86,7 +86,7 @@
                 <v-list-item-title> Usuario </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-            <div v-if="this.$router.">
+            <div>
               <v-list-item :to="{ name: 'Sell' }">
                 <v-list-item-action>
                   <v-icon>mdi-piggy-bank</v-icon>
