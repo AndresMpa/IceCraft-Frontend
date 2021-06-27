@@ -19,7 +19,7 @@ const base = axios.create({
 
 Vue.prototype.$http = base;
 //Esto sale de heroku
-//axios.defaults.baseURL = 'https://<Tellez-y-la-bd-?>/api/';
+//axios.defaults.baseURL = 'http://localhost:3000/api';
 
 //Esta URL solo será usado mientras corremos las pruebas
 //es necesario hacer deploy a heroku
